@@ -56,8 +56,8 @@ public class GreetingController {
 			 Haystack newHaystack= new Haystack(uuid, "string");
 			 HaystackUUID newHaystackUUID = new HaystackUUID(uuid);
 			 // save objects to their respective Database tables
-			 haystackRepository.save(newHaystack)
-			 haystackUUIDRepository.save(newHaystackUUID)
+			 haystackRepository.save(newHaystack);
+			 haystackUUIDRepository.save(newHaystackUUID);
 			i++;
 		 }
 		// // generate and save needle object at end
