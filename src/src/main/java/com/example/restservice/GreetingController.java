@@ -49,15 +49,17 @@ public class GreetingController {
 		haystackUUIDRepository.truncateTable();
 
 		// TODO: Initialize Tables
-		// while (i < count) {
-		//	// get random uuid
-		//	//
-		//	// generate new Haystack and HaystackUUID objects using uuid
-		//	//
-		//	// save objects to their respective Database tables
-		//	//
-		//	i++;
-		// }
+		 while (i < count) {
+			 // get random uuid
+			 UUID uuid = UUID.randomUUID();
+			 // generate new Haystack and HaystackUUID objects using uuid
+			 Haystack newHaystack= new Haystack(uuid, "string");
+			 HaystackUUID newHaystackUUID = new HaystackUUID(uuid);
+			 // save objects to their respective Database tables
+			 haystackRepository.save(newHaystack)
+			 haystackUUIDRepository.save(newHaystackUUID)
+			i++;
+		 }
 		// // generate and save needle object at end
 		// //
 		// // 
