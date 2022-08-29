@@ -26,31 +26,31 @@ public interface HaystackRepository extends CrudRepository<Haystack, Long> {
     @Modifying
     @Query(
             // TODO: write query to create hash index on value column
-            // value = " ... ",
+            value = "CREATE INDEX ON haystack USING HASH (value)",
             nativeQuery = true)
     void indexHash();
 
     @Query(
             // TODO: return full row when the value column is a needle
-            // value = " ... ",
+            value = "SELECT * FROM haystack WHERE value = 'needle'",
             nativeQuery = true)
     Haystack seqScan();
 
     @Query(
             // TODO: return the performance metrics from running the seqScan query
-            // value = "EXPLAIN ANALYZE ...",
+            value = "EXPLAIN ANALYZE SELECT * FROM haystack WHERE value = 'needle'",
             nativeQuery = true)
     List<String> seqScanPerf();
 
     @Query(
             // TODO: return values of id, uuid, and value from an inner join between haystack and haystackuuid tables when the value column is a needle
-            // value = " ... ",
+            value = "SELECT haystack.id, haystack.uuid, haystack.value FROM haystack INNER JOIN haystackuuid ON haystack.uuid = haystackuuid.uuid WHERE value = 'needle'",
             nativeQuery = true)
     Haystack tableJoin();
 
     @Query(
             // TODO: return the performance metrics from running the tableJoin query
-            // value = "EXPLAIN ANALYZE ...",
+            value = "EXPLAIN ANALYZE SELECT * FROM haystack INNER JOIN haystackuuid ON haystack.uuid = haystackuuid.uuid WHERE value = 'needle'",
             nativeQuery = true)
     List<String> tableJoinPerf();
 }

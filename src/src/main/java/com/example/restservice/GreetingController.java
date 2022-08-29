@@ -53,7 +53,7 @@ public class GreetingController {
 			 // get random uuid
 			 UUID uuid = UUID.randomUUID();
 			 // generate new Haystack and HaystackUUID objects using uuid
-			 Haystack newHaystack= new Haystack(uuid, "string");
+			 Haystack newHaystack= new Haystack(uuid, "hay string");
 			 HaystackUUID newHaystackUUID = new HaystackUUID(uuid);
 			 // save objects to their respective Database tables
 			 haystackRepository.save(newHaystack);
@@ -61,8 +61,9 @@ public class GreetingController {
 			i++;
 		 }
 		// // generate and save needle object at end
-		// //
-		// // 
+		UUID uuid = randomUUID();
+		haystackRepository.save(new Haystack(uuid, "needle"));
+		haystackUUIDRepository.save(new HaystackUUID(uuid));
 
 		// query1: Basic query with sequential scan
 		Haystack query1 = haystackRepository.seqScan();

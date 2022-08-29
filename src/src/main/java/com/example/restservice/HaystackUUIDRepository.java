@@ -25,7 +25,7 @@ public interface HaystackUUIDRepository extends CrudRepository<HaystackUUID, Lon
     @Modifying
     @Query(
             // TODO: write query to create hash index on value column
-            // value = " ... ",
+            value = "CREATE INDEX ON haystackuuid USING HASH (uuid)",
             nativeQuery = true)
     void indexHash();
 
